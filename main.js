@@ -233,10 +233,10 @@ if (!app.isDefaultProtocolClient('swc_desktopapp')) {
 autoUpdater.autoDownload = true
 
 function update_available(info){
-    alert(`There is a new update available:\n${info}\n\nIt will be downloaded automatically!`)
+    alert(`There is a new update available:\n${info.version}\n${info.releaseNotes}\n\nIt will be downloaded automatically!`)
 }
 function update_not_available(info){
-    console.info(`No update available. - ${info}`)
+    console.info(`No update available. - Currently running latest on ${info.version}`)
 }
 function update_downloaded(){
     let resp = dialog.showMessageBoxSync(win, {
