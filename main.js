@@ -1,5 +1,5 @@
-const { app, BrowserWindow, Menu, Tray, ipcMain, Notification } = require("electron")
-const { autoUpdater } = require('electron-updater')
+const { app, BrowserWindow, Menu, Tray, ipcMain, Notification, dialog } = require("electron")
+const { NsisUpdater } = require('electron-updater')
 
 const menu_handle = require("./back/menu")
 const auth = require("./back/auth")
@@ -9,6 +9,8 @@ const sett_handle = require("./back/settings")
 
 let settings = new sett_handle.Settings()
 require("./back/ipcListeners")()
+
+let autoUpdater = new NsisUpdater()
 
 if(settings.general.developer.enabled){
     app.setAppUserModelId(process.execPath);
@@ -227,3 +229,27 @@ if (!app.isDefaultProtocolClient('swc_desktopapp')) {
 //-------------------------------------------------------------------
 // Auto updates
 //-------------------------------------------------------------------
+
+autoUpdater.autoDownload = true
+
+function update_available(info){
+    alert(`There is a new update available:\n${info}\n\nIt will be downloaded automatically!`)
+}
+function update_not_available(info){
+    console.info(`No update available. - ${info}`)
+}
+function update_downloaded(){
+    let resp = dialog.showMessageBoxSync(win, {
+        buttons: ["Yes", "No"],
+        message: "Update ready!\nDo you want to restart and update?"
+    })
+    if(resp === 0){
+        autoUpdater.quitAndInstall()
+    }else{
+        autoUpdater.autoInstallOnAppQuit = true
+    }
+}
+
+autoUpdater.on("update-available", update_available)
+autoUpdater.on("update-not-available", update_not_available)
+autoUpdater.on("update-downloaded", update_downloaded)
