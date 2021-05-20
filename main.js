@@ -233,7 +233,9 @@ if (!app.isDefaultProtocolClient('swc_desktopapp')) {
 autoUpdater.autoDownload = true
 
 function update_available(info){
-    alert(`There is a new update available:\n${info.version}\n${info.releaseNotes}\n\nIt will be downloaded automatically!`)
+    dialog.showMessageBox(win, {
+        message: `There is a new update available: ${info.version}\n\n${info.releaseNotes}\n\nIt will be downloaded automatically!`
+    }).then()
 }
 function update_not_available(info){
     console.info(`No update available. - Currently running latest on ${info.version}`)
