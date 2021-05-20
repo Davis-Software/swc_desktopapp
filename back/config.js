@@ -9,7 +9,7 @@ exports.settings_config =
     {
         general: {
             developer: {
-                enabled: true,
+                enabled: false,
                 updates: false,
                 framedWindow: false
             },
