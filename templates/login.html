@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+    <title>SWC App</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';">
+
+    <link rel='stylesheet' href="../static/css/base/base_style.css">
+    <link rel='stylesheet' href="../static/css/base/login_style.css">
+    <link rel='stylesheet' href="../static/modules/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <script src="../static/modules/jquery.min.js"></script> <!-- Do not update/replace as it is modified to run in node.js environment! -->
+    <script src="../static/modules/bootstrap/popper.min.js"></script>
+    <script src="../static/modules/bootstrap/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div id="window-frame">
+    <div class="frame-logo"> <img src="../static/logo/512x512.png" alt="logo"> <span>SWC App</span></div>
+    <div class="frame-drag-section"></div>
+    <div class="frame-controls">
+        <div class="frame-btn"></div>
+        <div class="frame-btn" onclick="window_minimize()">
+            <img class="icon" src="./../static/logo/frame/min-w-30.png" alt="">
+        </div>
+        <div class="frame-btn close_ico" onclick="window_close()">
+            <img class="icon" src="./../static/logo/frame/close-w-30.png" alt="">
+        </div>
+    </div>
+</div>
+
+<div id="login-main">
+    <h3 class="pt-2">Log In</h3>
+    <span id="info" class="text-danger"></span>
+    <form action="#">
+        <input type="text" id="enter-username" class="fadeIn second" placeholder="Username" name="username" pattern="[A-Za-z_-]{3,}" title="At least 3 alphabetical letters" required>
+        <input type="password" id="password" class="fadeIn third" placeholder="Password" name="password" pattern="[A-Za-z0-9-_+%€/]{6,}" title="At least 6 letters" required>
+        <br> <span class="text-danger fadeIn third" id="error"></span> <br>
+        <input id="login-confirm-button" type="submit" class="fadeIn fourth" value="LOG IN">
+    </form>
+</div>
+
+
+<script src="../static/js/base/base_script.js"></script>
+<script src="../static/js/base/login_script.js"></script>
+</body>
+</html>

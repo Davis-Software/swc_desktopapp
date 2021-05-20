@@ -1,0 +1,5 @@
+owner: Davis-Software
+repo: swc_desktopapp
+provider: github
+publishAutoUpdate: true
+updaterCacheDirName: softwarecity_app-updater
