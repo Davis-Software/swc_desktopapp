@@ -11,7 +11,7 @@
         "url": "https://projects.software-city.org/projects/electron/swc_desktopapp"
     },
     "name": "swc_desktopapp",
-    "version": "0.1.0",
+    "version": "0.2.1",
     "description": "Software City App",
     "repository": "https://github.com/Davis-Software/swc_desktopapp",
     "license": "MIT",
@@ -23,11 +23,11 @@
         "publish": "electron-builder --x64 --win -p always"
     },
     "devDependencies": {
-        "electron": "^8.5.5",
+        "electron": "^12.0.0",
         "electron-builder": "^22.5.1"
     },
     "dependencies": {
-        "axios": "^0.21.0",
+        "axios": "^0.22.0",
         "electron-updater": "^4.2.5"
     },
     "build": {

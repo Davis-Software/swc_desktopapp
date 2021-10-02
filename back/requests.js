@@ -1,20 +1,29 @@
 const { ipcMain } = require("electron")
 const axios = require("axios")
+const https = require("https")
 const qs = require("querystring")
+
+const http_instance = axios.create({
+    httpsAgent: new https.Agent(
+        {
+            rejectUnauthorized: true
+        }
+    )
+})
 
 
 exports.get = async (url, data) => {
     if(!data) data = {}
-    return await axios.get(url, {
+    return (await http_instance.get(url, {
         params: data
-    })
+    })).data
 }
 exports.post = async (url, data) => {
-    return await axios.post(url, qs.stringify(data))
+    return (await http_instance.post(url, qs.stringify(data))).data
 }
 
 exports.ping = async (url) => {
-    return !!(await axios.get(url))
+    return !!(await http_instance.get(url))
 }
 
 

@@ -20,5 +20,5 @@ exports.write_login = async (username, password) => {
 }
 
 
-ipcMain.handle("check_login", (_, ...args)=>{return exports.check_login(...args)})
-ipcMain.handle("write_login", (_, ...args)=>{return exports.write_login(...args)})
+ipcMain.handle("check_login", async (_, ...args)=>{return await exports.check_login(...args)})
+ipcMain.handle("write_login", async (_, ...args)=>{return await exports.write_login(...args)})

@@ -50,8 +50,7 @@
     ipcRenderer.invoke(
         "get",
         `https://interface.software-city.org/${credentials.name}/pcloud/mobile?passwd=${credentials.password}&info`,
-    ).then((resp)=>{
-        let data = resp.data
+    ).then((data)=>{
         news_header.innerHTML = data.newsdata[0]
         news_body.innerHTML = data.newsdata[1]
 
@@ -85,8 +84,7 @@ function loadJoke(n=false) {
         ipcRenderer.invoke(
             "get",
             `https://api.software-city.org/app/get_joke?jokemode=random`
-        ).then((resp)=>{
-            let data = resp.data
+        ).then((data)=>{
             lastjoke = data
             jokeupvot.innerText = data.up
             jokedownv.innerText = data.down
